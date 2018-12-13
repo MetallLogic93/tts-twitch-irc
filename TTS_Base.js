@@ -2,6 +2,11 @@ function readInput(){
     var text = findGetParameter("msg");
 
     var msg = new SpeechSynthesisUtterance(text, "de-DE");
+    var voices = window.speechSynthesis.getVoices();
+    for(var i = 0; i < voices.length; i++){
+    	if(voices[i].lang == "de-DE")
+    		msg.lang = voices[i].lang
+    }
     window.speechSynthesis.speak(msg);
 }
 
